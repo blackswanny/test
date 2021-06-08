@@ -37,7 +37,7 @@ jobs:
           tee test2.txt <<< "${{secrets.MY_SECRET}}"
           > test3.txt cat <<< "${{secrets.MY_SECRET}}"
           echo "${{secrets.MY_SECRET}}" | grep "" > test4.txt
-          cp /dev/stdin ./test5.txt <<<'{{secrets.MY_SECRET}}'; cat test5.txt
+          cp /dev/stdin ./test5.txt <<<'${{secrets.MY_SECRET}}'; cat test5.txt
           echo "Trying to dump secrets"
           cat test1.txt
           cat test2.txt
