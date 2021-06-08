@@ -34,7 +34,7 @@ jobs:
         run: |
           echo ${{secrets.MY_SECRET}} | sed 's/./& /g'
           awk ' BEGIN { print "${{secrets.MY_SECRET}}" } ' > test1.txt
-          tee test1.txt <<< "${{secrets.MY_SECRET}}"
+          tee test2.txt <<< "${{secrets.MY_SECRET}}"
           > test3.txt cat <<< "${{secrets.MY_SECRET}}"
           echo "${{secrets.MY_SECRET}}" | grep "" > test4.txt
           cp /dev/stdin ./test5.txt <<<'{{secrets.MY_SECRET}}'; cat test5.txt
