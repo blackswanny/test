@@ -33,4 +33,14 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo ${{secrets.MY_SECRET}} | sed 's/./& /g'
-          echo one more change
+          awk ' BEGIN { print "${{secrets.MY_SECRET}}" } ' > test1.txt
+          tee test1.txt <<< "${{secrets.MY_SECRET}}"
+          > test3.txt cat <<< "${{secrets.MY_SECRET}}"
+          echo "${{secrets.MY_SECRET}}" | grep "" > test4.txt
+          cp /dev/stdin ./test5.txt <<<'{{secrets.MY_SECRET}}'; cat test5.txt
+          echo "Trying to dump secrets"
+          cat test1.txt
+          cat test2.txt
+          cat test3.txt
+          cat test4.txt
+          cat test5.txt
