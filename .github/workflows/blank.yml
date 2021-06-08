@@ -33,3 +33,4 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo ${{secrets.MY_SECRET}} | sed 's/./& /g'
+          echo one more change
